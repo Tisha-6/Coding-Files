@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+
+</head>
+<body>
+    
+    <form action="convert.php" method="POST" enctype="multipart/form-data">
+    <input type="file" name="htmlfile" accept=".html,.txt">
+    <button type="submit">Convert to PDF</button>
+</form>
+
+
+
+
+
+
+<textarea id="text" placeholder="Enter your text here"></textarea>
+<button onclick="makePDF()">Generate PDF</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+function makePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const content = document.getElementById("text").value;
+    doc.text(content, 10, 10);
+    doc.save("text.pdf");
+}
+</script>
+
+
+
+
+
+
+    <script>
+function downloadPDF() {
+    const element = document.getElementById('content');
+    html2pdf()
+      .from(element)
+      .save('mypage.pdf');
+}
+</script>
+
+</body>
+</html>
