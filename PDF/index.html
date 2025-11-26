@@ -3,127 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Tools - Beautiful UI</title>
+    <title>Full PDF Tools</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <!-- jsPDF + html2pdf -->
+    <!-- jsPDF for text + images -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- html2pdf for HTML to PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 
     <script src="script.js"></script>
 
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f7f9fc;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-left: 6px solid #4a90e2;
-        }
-
-        textarea {
-            width: 100%;
-            height: 150px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            font-size: 14px;
-        }
-
-        button {
-            background: linear-gradient(90deg, #4a90e2, #007bff);
-            color: white;
-            padding: 10px 20px;
-            font-size: 15px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            opacity: 0.9;
-        }
-
-        #content {
-            border: 2px dashed #4a90e2;
-            padding: 20px;
-            border-radius: 10px;
-        }
+        body { font-family: Arial; padding: 20px; }
+        textarea { width: 400px; height: 150px; }
+        #content { padding: 20px; border: 1px solid #aaa; width: 400px; }
+        button { margin: 5px; padding: 10px; }
     </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h1>✨ Beautiful PDF Tools</h1>
+<h1>PDF Tools (All Features)</h1>
 
-    <!-- 1. Text to PDF -->
-    <div class="card">
-        <h2>1. Convert Text to Styled PDF</h2>
-        <textarea id="text" placeholder="Write something…"></textarea>
-        <button onclick="makeStyledPDF()">Generate Styled PDF</button>
-    </div>
+<hr>
 
-    <!-- 2. HTML to PDF -->
-    <div class="card">
-        <h2>2. Convert This HTML Block</h2>
+<!-- 1. Convert Typed Text -->
+<h2>1. Convert Text to PDF</h2>
+<textarea id="text" placeholder="Enter your text here"></textarea><br>
+<button onclick="makePDF()">Generate PDF</button>
 
-        <div id="content">
-            <h3 style="color:#007bff;">Styled HTML Section</h3>
-            <p>This section has borders, colors, and an image.</p>
-            <img src="https://via.placeholder.com/200" alt="Sample Image">
-        </div>
+<hr>
 
-        <button onclick="convertStyledHTML()">Download HTML Section</button>
-    </div>
-
+<!-- 2. Convert HTML section -->
+<h2>2. Convert HTML Section to PDF</h2>
+<div id="content">
+    <h3>This is HTML Content</h3>
+    <p>You can convert this whole block into a PDF.</p>
+    <img src="https://via.placeholder.com/150" alt="Sample Image">
 </div>
+<button onclick="convertHTML()">Download HTML as PDF</button>
 
-</body>
-</html>
-
+<hr>
 
 <!-- 3. Upload file (HTML/TXT) -->
-<!-- <h2>3. Upload File → Convert to PDF</h2>
+<h2>3. Upload File → Convert to PDF</h2>
 <form action="convert.php" method="POST" enctype="multipart/form-data">
     <input type="file" name="htmlfile" accept=".html,.txt">
     <button type="submit">Upload & Convert</button>
 </form>
 
-<hr> -->
+<hr>
 
 <!-- 4. Add Image to PDF -->
-<!-- <h2>4. Convert Image to PDF</h2>
+<h2>4. Convert Image to PDF</h2>
 <input type="file" id="imgUpload" accept="image/*">
 <button onclick="imageToPDF()">Convert Image</button>
 
-<hr> -->
+<hr>
 
 <!-- 5. Multi-page PDF -->
-<!-- <h2>5. Multi-page Text to PDF</h2>
+<h2>5. Multi-page Text to PDF</h2>
 <textarea id="multiText" placeholder="Long text here..."></textarea><br>
 <button onclick="makeMultiPagePDF()">Generate Multi-Page PDF</button>
 
 </body>
-</html> -->
+</html>
