@@ -70,3 +70,36 @@ function makeMultiPagePDF() {
 
     doc.save("multi_page_text.pdf");
 }
+
+// unlimited page //
+
+
+function makeMultiPagePDF() {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({
+        unit: "pt",
+        format: "a4"
+    });
+
+    let text = document.getElementById("multiText").value;
+    let lineHeight = 16;
+    let margin = 40;
+    let maxWidth = pdf.internal.pageSize.getWidth() - margin * 2;
+    let maxHeight = pdf.internal.pageSize.getHeight() - margin * 2;
+
+    // Split text into lines that fit the width
+    let lines = pdf.splitTextToSize(text, maxWidth);
+
+    let y = margin;
+
+    lines.forEach((line) => {
+        if (y > maxHeight + margin) {
+            pdf.addPage();
+            y = margin;
+        }
+        pdf.text(line, margin, y);
+        y += lineHeight;
+    });
+
+    pdf.save("multipage.pdf");
+}
