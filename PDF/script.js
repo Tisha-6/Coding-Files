@@ -74,32 +74,38 @@ function imageToPDF() {
 // unlimited page //
 
 
-function makeMultiPagePDF() {
+function makePDF() {
     const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF({
-        unit: "pt",
-        format: "a4"
-    });
+    const doc = new jsPDF();
 
-    let text = document.getElementById("multiText").value;
-    let lineHeight = 16;
-    let margin = 40;
-    let maxWidth = pdf.internal.pageSize.getWidth() - margin * 2;
-    let maxHeight = pdf.internal.pageSize.getHeight() - margin * 2;
+    let text = document.getElementById("text").value;
 
-    // Split text into lines that fit the width
-    let lines = pdf.splitTextToSize(text, maxWidth);
+    const margin = 10;
+    const lineHeight = 10;
+    const maxWidth = 190;
+    const pageHeight = doc.internal.pageSize.height;
+
+    const lines = doc.splitTextToSize(text, maxWidth);
 
     let y = margin;
 
-    lines.forEach((line) => {
-        if (y > maxHeight + margin) {
-            pdf.addPage();
+    lines.forEach(line => {
+        if (y > pageHeight - margin) {
+            // Add border on previous page
+            doc.setLineWidth(1);
+            doc.rect(5, 5, doc.internal.pageSize.width - 10, doc.internal.pageSize.height - 10);
+
+            doc.addPage();
             y = margin;
         }
-        pdf.text(line, margin, y);
+        doc.text(line, margin, y);
         y += lineHeight;
     });
 
-    pdf.save("multipage.pdf");
+    // Border for last page
+    doc.setLineWidth(1);
+    doc.rect(5, 5, doc.internal.pageSize.width - 10, doc.internal.pageSize.height - 10);
+
+    doc.save("text.pdf");
 }
+
