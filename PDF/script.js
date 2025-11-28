@@ -3,30 +3,13 @@ function makePDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    let text = document.getElementById("text").value;
+    const text = document.getElementById("text").value;
 
-    const margin = 10;
-    const lineHeight = 10;
-    const maxWidth = 190; // A4 width minus margins
-    const pageHeight = doc.internal.pageSize.height;
-
-    // Split text automatically
-    const lines = doc.splitTextToSize(text, maxWidth);
-
-    let y = margin;
-
-    lines.forEach(line => {
-        if (y > pageHeight - margin) {
-            doc.addPage();
-            y = margin;
-        }
-        doc.text(line, margin, y);
-        y += lineHeight;
-    });
+    doc.setFontSize(12);
+    doc.text(text, 10, 10);
 
     doc.save("text.pdf");
 }
-
 
 
 
