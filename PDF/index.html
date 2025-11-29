@@ -16,130 +16,128 @@
 
     <style>
         /* ---------- GLOBAL STYLE ---------- */
+        /* ---------- GLOBAL PAGE STYLE ---------- */
         body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            padding: 40px;
-            background: linear-gradient(135deg, #e8eef5, #fdfdfd);
-            color: #333;
+            margin: 0;
+            padding: 50px;
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            background: radial-gradient(circle at top, #1d1f27, #101218);
+            color: #f5f7fb;
         }
 
-        /* ---------- TITLES ---------- */
+        /* ---------- PAGE TITLE ---------- */
         h1 {
             text-align: center;
-            color: #2a2f49;
-            margin-bottom: 25px;
-            font-size: 36px;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 42px;
+            font-weight: 800;
+            color: #00d4ff;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
         }
 
+        /* ---------- SECTION TITLE ---------- */
         h2 {
-            color: #2a2f49;
+            font-size: 22px;
             margin-top: 40px;
-            font-size: 24px;
-            border-left: 5px solid #007bff;
-            padding-left: 10px;
+            color: #00d4ff;
+            border-left: 5px solid #00d4ff;
+            padding-left: 12px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.25);
+        }
+
+        /* ---------- NEON GLASS CARD ---------- */
+        #content,
+        form {
+            padding: 25px;
+            max-width: 700px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
             transition: 0.3s;
         }
 
-        h2:hover {
-            padding-left: 14px;
-            color: #0056b3;
+        #content:hover,
+        form:hover {
+            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.25);
         }
 
         /* ---------- TEXTAREA ---------- */
         textarea {
             width: 100%;
-            max-width: 650px;
+            max-width: 700px;
             height: 170px;
             padding: 14px;
-            border: 1px solid #d1d1d1;
-            border-radius: 10px;
-            font-size: 16px;
-            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.35);
+            background: rgba(255, 255, 255, 0.1);
+            color: #e8f8ff;
+            font-size: 17px;
             outline: none;
-            transition: 0.3s;
+            transition: .25s;
+        }
+
+        textarea::placeholder {
+            color: #b5c6d2;
         }
 
         textarea:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 10px rgba(0, 123, 255, 0.35);
-            background: #ffffff;
+            border-color: #00d4ff;
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        /* ---------- CONTENT BOX ---------- */
-        #content {
-            padding: 25px;
-            border: 1px solid #ccc;
-            width: 100%;
-            max-width: 650px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(7px);
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
-            transition: 0.3s;
-        }
-
-        #content:hover {
-            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
-        }
-
-        /* ---------- BUTTONS ---------- */
+        /* ---------- COOL BUTTON ---------- */
         button {
-            margin: 10px 0;
-            padding: 12px 22px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
+            margin-top: 12px;
+            padding: 12px 28px;
             font-size: 16px;
             font-weight: 600;
-            transition: all 0.25s ease;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #0f1b25;
+            background: linear-gradient(135deg, #00eaff, #00b8ff);
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+            transition: 0.25s;
         }
 
         button:hover {
-            background: linear-gradient(135deg, #0056b3, #003f82);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 86, 179, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 0 18px rgba(0, 212, 255, 0.8);
+            background: linear-gradient(135deg, #00f7ff, #00d0ff);
         }
 
         button:active {
             transform: translateY(1px);
-            box-shadow: 0 2px 5px rgba(0, 86, 179, 0.2);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
         }
 
         /* ---------- FILE INPUT ---------- */
         input[type="file"] {
-            margin: 10px 0;
-            padding: 10px;
-            background: #fff;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            margin: 12px 0;
+            padding: 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: #cfefff;
+            width: 100%;
+            max-width: 700px;
         }
 
-        /* ---------- HR LINES ---------- */
+        input[type="file"]:hover {
+            border-color: #00d4ff;
+        }
+
+        /* ---------- HR DIVIDER ---------- */
         hr {
-            margin: 35px 0;
+            margin: 40px 0;
             border: none;
             height: 1px;
-            background: linear-gradient(to right, transparent, #ccc, transparent);
-        }
-
-        /* ---------- FORM ---------- */
-        form {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 20px;
-            max-width: 650px;
-            border-radius: 12px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
-            backdrop-filter: blur(6px);
-            transition: 0.3s;
-        }
-
-        form:hover {
-            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+            background: linear-gradient(to right, transparent, #00d4ff, transparent);
         }
     </style>
 </head>
