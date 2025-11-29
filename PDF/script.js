@@ -50,26 +50,26 @@ function imageToPDF() {
 
 
 // ------------ 4. Multi-page Text PDF --------------
-// function makeMultiPagePDF() {
-//     const { jsPDF } = window.jspdf;
-//     const doc = new jsPDF();
+function makeMultiPagePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-//     let text = document.getElementById("multiText").value;
+    let text = document.getElementById("multiText").value;
 
-//     let lines = doc.splitTextToSize(text, 180);
-//     let y = 10;
+    let lines = doc.splitTextToSize(text, 180);
+    let y = 10;
 
-//     lines.forEach(line => {
-//         if (y > 280) { 
-//             doc.addPage(); 
-//             y = 10; 
-//         }
-//         doc.text(line, 10, y);
-//         y += 7;
-//     });
+    lines.forEach(line => {
+        if (y > 280) { 
+            doc.addPage(); 
+            y = 10; 
+        }
+        doc.text(line, 10, y);
+        y += 7;
+    });
 
-//     doc.save("multi_page_text.pdf");
-// }
+    doc.save("multi_page_text.pdf");
+}
 
 // unlimited page //
 
