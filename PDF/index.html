@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,178 +16,179 @@
 
     <style>
         /* ---------- GLOBAL STYLE ---------- */
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    padding: 40px;
-    background: linear-gradient(135deg, #e8eef5, #fdfdfd);
-    color: #333;
-}
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            padding: 40px;
+            background: linear-gradient(135deg, #e8eef5, #fdfdfd);
+            color: #333;
+        }
 
-/* ---------- TITLES ---------- */
-h1 {
-    text-align: center;
-    color: #2a2f49;
-    margin-bottom: 25px;
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
+        /* ---------- TITLES ---------- */
+        h1 {
+            text-align: center;
+            color: #2a2f49;
+            margin-bottom: 25px;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
 
-h2 {
-    color: #2a2f49;
-    margin-top: 40px;
-    font-size: 24px;
-    border-left: 5px solid #007bff;
-    padding-left: 10px;
-    transition: 0.3s;
-}
+        h2 {
+            color: #2a2f49;
+            margin-top: 40px;
+            font-size: 24px;
+            border-left: 5px solid #007bff;
+            padding-left: 10px;
+            transition: 0.3s;
+        }
 
-h2:hover {
-    padding-left: 14px;
-    color: #0056b3;
-}
+        h2:hover {
+            padding-left: 14px;
+            color: #0056b3;
+        }
 
-/* ---------- TEXTAREA ---------- */
-textarea {
-    width: 100%;
-    max-width: 650px;
-    height: 170px;
-    padding: 14px;
-    border: 1px solid #d1d1d1;
-    border-radius: 10px;
-    font-size: 16px;
-    background: rgba(255, 255, 255, 0.9);
-    outline: none;
-    transition: 0.3s;
-}
+        /* ---------- TEXTAREA ---------- */
+        textarea {
+            width: 100%;
+            max-width: 650px;
+            height: 170px;
+            padding: 14px;
+            border: 1px solid #d1d1d1;
+            border-radius: 10px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            outline: none;
+            transition: 0.3s;
+        }
 
-textarea:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.35);
-    background: #ffffff;
-}
+        textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.35);
+            background: #ffffff;
+        }
 
-/* ---------- CONTENT BOX ---------- */
-#content {
-    padding: 25px;
-    border: 1px solid #ccc;
-    width: 100%;
-    max-width: 650px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(7px);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
-    transition: 0.3s;
-}
+        /* ---------- CONTENT BOX ---------- */
+        #content {
+            padding: 25px;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 650px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(7px);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+            transition: 0.3s;
+        }
 
-#content:hover {
-    box-shadow: 0 6px 22px rgba(0,0,0,0.18);
-}
+        #content:hover {
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+        }
 
-/* ---------- BUTTONS ---------- */
-button {
-    margin: 10px 0;
-    padding: 12px 22px;
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: all 0.25s ease;
-}
+        /* ---------- BUTTONS ---------- */
+        button {
+            margin: 10px 0;
+            padding: 12px 22px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
 
-button:hover {
-    background: linear-gradient(135deg, #0056b3, #003f82);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.3);
-}
+        button:hover {
+            background: linear-gradient(135deg, #0056b3, #003f82);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 86, 179, 0.3);
+        }
 
-button:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 5px rgba(0, 86, 179, 0.2);
-}
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 5px rgba(0, 86, 179, 0.2);
+        }
 
-/* ---------- FILE INPUT ---------- */
-input[type="file"] {
-    margin: 10px 0;
-    padding: 10px;
-    background: #fff;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-}
+        /* ---------- FILE INPUT ---------- */
+        input[type="file"] {
+            margin: 10px 0;
+            padding: 10px;
+            background: #fff;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
 
-/* ---------- HR LINES ---------- */
-hr {
-    margin: 35px 0;
-    border: none;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #ccc, transparent);
-}
+        /* ---------- HR LINES ---------- */
+        hr {
+            margin: 35px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ccc, transparent);
+        }
 
-/* ---------- FORM ---------- */
-form {
-    background: rgba(255, 255, 255, 0.85);
-    padding: 20px;
-    max-width: 650px;
-    border-radius: 12px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
-    backdrop-filter: blur(6px);
-    transition: 0.3s;
-}
+        /* ---------- FORM ---------- */
+        form {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            max-width: 650px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(6px);
+            transition: 0.3s;
+        }
 
-form:hover {
-    box-shadow: 0 6px 22px rgba(0,0,0,0.18);
-}
-
+        form:hover {
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+        }
     </style>
 </head>
+
 <body>
 
-<h1>PDF Tools (All Features)</h1>
+    <h1>PDF Tools (All Features)</h1>
 
-<hr>
+    <hr>
 
-<!-- 1. Convert Typed Text -->
-<h2>1. Convert Text to PDF</h2>
-<textarea id="text" placeholder="Enter your text here"></textarea><br>
-<button onclick="makePDF()">Generate PDF</button>
+    <!-- 1. Convert Typed Text -->
+    <h2>1. Convert Text to PDF</h2>
+    <textarea id="text" placeholder="Enter your text here"></textarea><br>
+    <button onclick="makePDF()">Generate PDF</button>
 
-<hr>
+    <hr>
 
-<!-- 2. Convert HTML section -->
-<h2>2. Convert HTML Section to PDF</h2>
-<div id="content">
-    <h3>This is HTML Content</h3>
-    <p>You can convert this whole block into a PDF.</p>
-    <img src="https://via.placeholder.com/150" alt="Sample Image">
-</div>
-<button onclick="convertHTML()">Download HTML as PDF</button>
+    <!-- 2. Convert HTML section -->
+    <h2>2. Convert HTML Section to PDF</h2>
+    <div id="content">
+        <h3>This is HTML Content</h3>
+        <p>You can convert this whole block into a PDF.</p>
+        <img src="https://via.placeholder.com/150" alt="Sample Image">
+    </div>
+    <button onclick="convertHTML()">Download HTML as PDF</button>
 
-<hr>
+    <hr>
 
-<!-- 3. Upload file (HTML/TXT) -->
-<h2>3. Upload File → Convert to PDF</h2>
-<form action="convert.php" method="POST" enctype="multipart/form-data">
-    <input type="file" name="htmlfile" accept=".html,.txt">
-    <button type="submit">Upload & Convert</button>
-</form>
+    <!-- 3. Upload file (HTML/TXT) -->
+    <h2>3. Upload File → Convert to PDF</h2>
+    <form action="convert.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="htmlfile" accept=".html,.txt">
+        <button type="submit">Upload & Convert</button>
+    </form>
 
-<hr>
+    <hr>
 
-<!-- 4. Add Image to PDF -->
-<h2>4. Convert Image to PDF</h2>
-<input type="file" id="imgUpload" accept="image/*">
-<button onclick="imageToPDF()">Convert Image</button>
+    <!-- 4. Add Image to PDF -->
+    <h2>4. Convert Image to PDF</h2>
+    <input type="file" id="imgUpload" accept="image/*">
+    <button onclick="imageToPDF()">Convert Image</button>
 
-<hr>
+    <hr>
 
-<!-- 5. Multi-page PDF -->
-<h2>5. Multi-page Text to PDF</h2>
-<textarea id="multiText" placeholder="Long text here..."></textarea><br>
-<button onclick="makeMultiPagePDF()">Generate Multi-Page PDF</button>
+    <!-- 5. Multi-page PDF -->
+    <h2>5. Multi-page Text to PDF</h2>
+    <textarea id="multiText" placeholder="Long text here..."></textarea><br>
+    <button onclick="makeMultiPagePDF()">Generate Multi-Page PDF</button>
 
 </body>
+
 </html>
