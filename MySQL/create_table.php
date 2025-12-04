@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>create_table_with_database</title>
+    <title>Create_table_with_database</title>
 </head>
 <body>
 

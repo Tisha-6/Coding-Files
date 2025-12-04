@@ -6,11 +6,5 @@ $command = 'soffice --headless --convert-to pdf "'.$input.'" --outdir .';
 
 exec($command);
 
-
-
-
-
-
-
 echo "Converted to PDF successfully!";
 ?>
