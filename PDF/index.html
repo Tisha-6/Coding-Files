@@ -143,3 +143,50 @@
 </head>
 
 <body>
+
+    <h1>PDF Tools (All Features)</h1>
+
+    <hr>
+
+    <!-- 1. Convert Typed Text -->
+    <h2>1. Convert Text to PDF</h2>
+    <textarea id="text" placeholder="Enter your text here"></textarea><br>
+    <button onclick="makePDF()">Generate PDF</button>
+
+    <hr>
+
+    <!-- 2. Convert HTML section -->
+    <h2>2. Convert HTML Section to PDF</h2>
+    <div id="content">
+        <h3>This is HTML Content</h3>
+        <p>You can convert this whole block into a PDF.</p>
+        <img src="https://via.placeholder.com/150" alt="Sample Image">
+    </div>
+    <button onclick="convertHTML()">Download HTML as PDF</button>
+
+    <hr>
+
+    <!-- 3. Upload file (HTML/TXT) -->
+    <h2>3. Upload File → Convert to PDF</h2>
+    <form action="convert.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="htmlfile" accept=".html,.txt">
+        <button type="submit">Upload & Convert</button>
+    </form>
+
+    <hr>
+
+    <!-- 4. Add Image to PDF -->
+    <h2>4. Convert Image to PDF</h2>
+    <input type="file" id="imgUpload" accept="image/*">
+    <button onclick="imageToPDF()">Convert Image</button>
+
+    <hr>
+
+    <!-- 5. Multi-page PDF -->
+    <h2>5. Multi-page Text to PDF</h2>
+    <textarea id="multiText" placeholder="Long text here..."></textarea><br>
+    <button onclick="makeMultiPagePDF()">Generate Multi-Page PDF</button>
+
+</body>
+
+</html>
