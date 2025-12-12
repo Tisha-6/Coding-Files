@@ -191,3 +191,14 @@ body {
   border-color: #4f46e5;
 }
 
+
+.card {
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+  border: 1px solid #4f46e5;
+  transform: translateY(-8px);
+}
