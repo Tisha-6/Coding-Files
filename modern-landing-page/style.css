@@ -170,19 +170,23 @@ body {
 }
 
 
-.card {
+.feature-cards .card {
   background: #fff;
   padding: 25px;
   width: 280px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   transition: 0.3s ease;
+  cursor: pointer;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+/* HOVER EFFECT FOR ALL THREE CARDS */
+.feature-cards .card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.15);
+  border: 1px solid #4f46e5;
 }
+
 
 
 
