@@ -168,3 +168,18 @@ body {
   50%  { transform: translateY(-4px) scale(1.08); }
  100% { transform: translateY(-4px) scale(1); }
 }
+
+
+.card {
+  background: #fff;
+  padding: 25px;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
