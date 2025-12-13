@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<textarea id="text" placeholder="Enter your text here"></textarea>
+<button onclick="makePDF()">Generate PDF</button>
+
+<script>
+function makePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const content = document.getElementById("text").value;
+    doc.text(content, 10, 10);
+    doc.save("text.pdf");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full PDF Tools</title>
+
+    <!-- jsPDF for text + images -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- html2pdf for HTML to PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+    <script src="script.js"></script>
+
+    <style>
+        /* ---------- GLOBAL STYLE ---------- */
+        /* ---------- GLOBAL PAGE STYLE ---------- */
+        body {
+            margin: 0;
+            padding: 50px;
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            background: radial-gradient(circle at top, #1d1f27, #101218);
+            color: #f5f7fb;
+        }
+
+        /* ---------- PAGE TITLE ---------- */
+        h1 {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 800;
+            color: #00d4ff;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+        }
+
+        /* ---------- SECTION TITLE ---------- */
+        h2 {
+            font-size: 22px;
+            margin-top: 40px;
+            color: #00d4ff;
+            border-left: 5px solid #00d4ff;
+            padding-left: 12px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.25);
+        }
+
+        /* ---------- NEON GLASS CARD ---------- */
+        #content,
+        form {
+            padding: 25px;
+            max-width: 700px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+            transition: 0.3s;
+        }
+
+        #content:hover,
+        form:hover {
+            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.25);
+        }
+
+        /* ---------- TEXTAREA ---------- */
+        textarea {
+            width: 100%;
+            max-width: 700px;
+            height: 170px;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.35);
+            background: rgba(255, 255, 255, 0.1);
+            color: #e8f8ff;
+            font-size: 17px;
+            outline: none;
+            transition: .25s;
+        }
+
+        textarea::placeholder {
+            color: #b5c6d2;
+        }
+
+        textarea:focus {
+            border-color: #00d4ff;
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* ---------- COOL BUTTON ---------- */
+        button {
+            margin-top: 12px;
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #0f1b25;
+            background: linear-gradient(135deg, #00eaff, #00b8ff);
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+            transition: 0.25s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 18px rgba(0, 212, 255, 0.8);
+            background: linear-gradient(135deg, #00f7ff, #00d0ff);
+        }
+
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        /* ---------- FILE INPUT ---------- */
+        input[type="file"] {
+            margin: 12px 0;
+            padding: 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: #cfefff;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        input[type="file"]:hover {
+            border-color: #00d4ff;
+        }
+
+        /* ---------- HR DIVIDER ---------- */
+        hr {
+            margin: 40px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #00d4ff, transparent);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>PDF Tools (All Features)</h1>
+
+    <hr>
+
+    <!-- 1. Convert Typed Text -->
+    <h2>1. Convert Text to PDF</h2>
+    <textarea id="text" placeholder="Enter your text here"></textarea><br>
+    <button onclick="makePDF()">Generate PDF</button>
+
+    <hr>
+
+    <!-- 2. Convert HTML section -->
+    <h2>2. Convert HTML Section to PDF</h2>
+    <div id="content">
+        <h3>This is HTML Content</h3>
+        <p>You can convert this whole block into a PDF.</p>
+        <img src="https://via.placeholder.com/150" alt="Sample Image">
+    </div>
+    <button onclick="convertHTML()">Download HTML as PDF</button>
+
+    <hr>
+
+    <!-- 3. Upload file (HTML/TXT) -->
+    <h2>3. Upload File → Convert to PDF</h2>
+    <form action="convert.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="htmlfile" accept=".html,.txt">
+        <button type="submit">Upload & Convert</button>
+    </form>
+
+    <hr>
+
+    <!-- 4. Add Image to PDF -->
+    <h2>4. Convert Image to PDF</h2>
+    <input type="file" id="imgUpload" accept="image/*">
+    <button onclick="imageToPDF()">Convert Image</button>
+
+    <hr>
+
+    <!-- 5. Multi-page PDF -->
+    <h2>5. Multi-page Text to PDF</h2>
+    <textarea id="multiText" placeholder="Long text here..."></textarea><br>
+    <button onclick="makeMultiPagePDF()">Generate Multi-Page PDF</button>
+
+</body>
+
+</html>
