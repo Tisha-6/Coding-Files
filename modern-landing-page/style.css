@@ -23,12 +23,19 @@ body {
   font-size: 28px;
   font-weight: 700;
   background: linear-gradient(90deg, #4f46e5, #6d28d9);
+
+  /* Required for gradient text */
+  background-clip: text;
   -webkit-background-clip: text;
+
+  color: transparent;
   -webkit-text-fill-color: transparent;
+
   letter-spacing: 1px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
 }
+
 
 .logo:hover {
   opacity: 0.8;
