@@ -1,15 +1,19 @@
 <?php
-include("../config/db.php");
+include '../config/db.php';
 
-if (isset($_POST['submit'])) {
-    $date = $_POST['date'];
+// Fetch all staff
+$result = mysqli_query($conn, "SELECT * FROM staff");
 
-    foreach ($_POST['status'] as $staff_id => $status) {
-        mysqli_query($conn, "INSERT INTO attendance (staff_id, attendance_date, status)
-        VALUES ('$staff_id','$date','$status')");
-    }
-    echo "Attendance marked successfully";
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
 }
+
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "Staff Name: " . $row['name'] . "<br>";
+}
+
+    echo "Attendance marked successfully";
+
 
 $staff = mysqli_query($conn, "SELECT * FROM staff");
 ?>
@@ -47,7 +51,7 @@ $row = mysqli_fetch_assoc($result);
                 </select>
             </td>
         </tr>
-        <?php } ?>
+        <?php ?>
     </table>
 
     <button type="submit" name="submit">Save Attendance</button>
