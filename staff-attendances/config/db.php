@@ -1,7 +1,12 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "staff_attendance");
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "attendance_system";
+
+$conn = mysqli_connect($host, $user, $pass, $db);
 
 if (!$conn) {
-    die("Database Connection Failed");
+    die("Database connection failed: " . mysqli_connect_error());
 }
 ?>
