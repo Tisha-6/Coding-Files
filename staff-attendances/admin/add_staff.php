@@ -1,18 +1,32 @@
 <?php
-include '../config/db.php';
+include("../config/db.php");
 
-if (isset($_POST['add'])) {
+if (isset($_POST['submit'])) {
     $name = $_POST['name'];
-    $dept = $_POST['dept'];
+    $department = $_POST['department'];
 
-    mysqli_query($conn, "INSERT INTO staff (name, department) VALUES ('$name','$dept')");
-    echo "Staff Added Successfully";
+    mysqli_query($conn, "INSERT INTO staff (name, department) VALUES ('$name','$department')");
+    echo "Staff added successfully";
 }
 ?>
 
-<form method="post">
-    <h2>Add Staff</h2>
-    <input type="text" name="name" placeholder="Staff Name" required><br><br>
-    <input type="text" name="dept" placeholder="Department" required><br><br>
-    <button name="add">Add Staff</button>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Staff</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<h2>Add Staff</h2>
+
+<form method="POST">
+    <input type="text" name="name" placeholder="Staff Name" required>
+    <input type="text" name="department" placeholder="Department" required>
+    <button type="submit" name="submit">Add Staff</button>
 </form>
+
+<a href="dashboard.php">Back</a>
+
+</body>
+</html>

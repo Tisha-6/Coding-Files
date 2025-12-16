@@ -1,36 +1,57 @@
 <?php
-include '../config/db.php';
+include("../config/db.php");
 
 if (isset($_POST['submit'])) {
-    $date = date('Y-m-d');
+    $date = $_POST['date'];
 
-    foreach ($_POST['status'] as $id => $status) {
-        mysqli_query($conn, "INSERT INTO attendance (staff_id, date, status)
-        VALUES ('$id','$date','$status')");
+    foreach ($_POST['status'] as $staff_id => $status) {
+        mysqli_query($conn, "INSERT INTO attendance (staff_id, attendance_date, status)
+        VALUES ('$staff_id','$date','$status')");
     }
-    echo "Attendance Marked";
+    echo "Attendance marked successfully";
 }
 
 $staff = mysqli_query($conn, "SELECT * FROM staff");
 ?>
 
-<form method="post">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark Attendance</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
 <h2>Mark Attendance</h2>
-<table border="1">
-<tr><th>Name</th><th>Status</th></tr>
 
-<?php while ($row = mysqli_fetch_assoc($staff)) { ?>
-<tr>
-    <td><?= $row['name'] ?></td>
-    <td>
-        <select name="status[<?= $row['id'] ?>]">
-            <option value="Present">Present</option>
-            <option value="Absent">Absent</option>
-        </select>
-    </td>
-</tr>
-<?php } ?>
-</table><br>
+<form method="POST">
+    <input type="date" name="date" required><br><br>
 
-<button name="submit">Submit</button>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Status</th>
+        </tr>
+
+        <?php while ($row = mysqli_fetch_assoc($staff)) { ?>
+        <tr>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['department']; ?></td>
+            <td>
+                <select name="status[<?php echo $row['id']; ?>]">
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+            </td>
+        </tr>
+        <?php } ?>
+    </table>
+
+    <button type="submit" name="submit">Save Attendance</button>
 </form>
+
+<a href="dashboard.php">Back</a>
+
+</body>
+</html>
