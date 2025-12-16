@@ -34,7 +34,9 @@ $staff = mysqli_query($conn, "SELECT * FROM staff");
             <th>Status</th>
         </tr>
 
-        <?php while ($row = mysqli_fetch_assoc($staff)) { ?>
+        <?php $result = mysqli_query($conn, "SELECT * FROM staff");
+$row = mysqli_fetch_assoc($result);
+?>
         <tr>
             <td><?php echo $row['name']; ?></td>
             <td><?php echo $row['department']; ?></td>
