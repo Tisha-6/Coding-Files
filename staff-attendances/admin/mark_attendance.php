@@ -40,10 +40,11 @@ $staff = mysqli_query($conn, "SELECT * FROM staff");
                 <th>Status</th>
             </tr>
 
-            <?php $result = mysqli_query($conn, "SELECT * FROM staff");
-            $row = mysqli_fetch_assoc($result);
-            ?>
-            <tr>
+            <?php
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+           <tr>
                 <td><?php echo $row['name']; ?></td>
                 <td><?php echo $row['department']; ?></td>
                 <td>
@@ -53,7 +54,12 @@ $staff = mysqli_query($conn, "SELECT * FROM staff");
                     </select>
                 </td>
             </tr>
-            <?php ?>
+            <?php
+            }
+        } else {
+            echo "<tr><td colspan='3'>No staff found</td></tr>";
+        }
+        ?>
         </table>
 
         <button type="submit" name="submit">Save Attendance</button>
