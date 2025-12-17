@@ -1,25 +1,30 @@
 <?php
-include("../config/db.php");
+include '../config/db.php';
 
-$result = mysqli_query($conn, "
-    SELECT staff.name, staff.department, attendance.attendance_date, attendance.status
-    FROM attendance
-    JOIN staff ON staff.id = attendance.staff_id
-    ORDER BY attendance.attendance_date DESC
-");
+$sql = "
+SELECT staff.name, staff.department, attendance.date, attendance.status
+FROM attendance
+JOIN staff ON attendance.staff_id = staff.id
+ORDER BY attendance.date DESC
+";
+
+$result = mysqli_query($conn, $sql);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>View Attendance</title>
-    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
 <h2>Attendance Records</h2>
 
-<table>
+<table border="1">
     <tr>
         <th>Name</th>
         <th>Department</th>
@@ -27,14 +32,22 @@ $result = mysqli_query($conn, "
         <th>Status</th>
     </tr>
 
-    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-    <tr>
-        <td><?php echo $row['name']; ?></td>
-        <td><?php echo $row['department']; ?></td>
-        <td><?php echo $row['attendance_date']; ?></td>
-        <td><?php echo $row['status']; ?></td>
-    </tr>
-    <?php } ?>
+    <?php
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+        <tr>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['department']; ?></td>
+            <td><?php echo $row['date']; ?></td>
+            <td><?php echo $row['status']; ?></td>
+        </tr>
+    <?php
+        }
+    } else {
+        echo "<tr><td colspan='4'>No attendance records found</td></tr>";
+    }
+    ?>
 </table>
 
 <a href="dashboard.php">Back</a>
