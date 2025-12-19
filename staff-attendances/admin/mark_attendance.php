@@ -1,22 +1,26 @@
 <?php
 include '../config/db.php';
 
-// Fetch all staff
+// Fetch staff ONCE
 $result = mysqli_query($conn, "SELECT * FROM staff");
-
 if (!$result) {
     die("Query failed: " . mysqli_error($conn));
 }
 
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "Staff Name: " . $row['name'] . "<br>";
+// Handle form submission
+if (isset($_POST['submit'])) {
+    $date = $_POST['date'];
+    $status = $_POST['status'];
+
+    foreach ($status as $staff_id => $attendance) {
+        mysqli_query($conn, "INSERT INTO attendance (staff_id, date, status)
+                             VALUES ('$staff_id', '$date', '$attendance')");
+    }
+
+    echo "<p>Attendance marked successfully</p>";
 }
-
-echo "Attendance marked successfully";
-
-
-$staff = mysqli_query($conn, "SELECT * FROM staff");
 ?>
+
 
 <!DOCTYPE html>
 <html>
