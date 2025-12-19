@@ -52,11 +52,5 @@ if (isset($_POST['login'])) {
     <button type="submit" name="login">Login</button>
 </form>
 
-
-
-
-
-
-
 </body>
 </html>
