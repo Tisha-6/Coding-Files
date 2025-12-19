@@ -36,7 +36,7 @@ if (isset($_POST['login'])) {
 <head>
     <title>Admin Login</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
@@ -51,6 +51,12 @@ if (isset($_POST['login'])) {
     <input type="password" name="password" placeholder="Password" required><br><br>
     <button type="submit" name="login">Login</button>
 </form>
+
+
+
+
+
+
 
 </body>
 </html>
