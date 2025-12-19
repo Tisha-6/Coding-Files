@@ -44,26 +44,22 @@ if (isset($_POST['submit'])) {
                 <th>Status</th>
             </tr>
 
-            <?php
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-        ?>
-           <tr>
-                <td><?php echo $row['name']; ?></td>
-                <td><?php echo $row['department']; ?></td>
-                <td>
-                    <select name="status[<?php echo $row['id']; ?>]">
-                        <option value="Present">Present</option>
-                        <option value="Absent">Absent</option>
-                    </select>
-                </td>
-            </tr>
-            <?php
-            }
-        } else {
-            echo "<tr><td colspan='3'>No staff found</td></tr>";
-        }
-        ?>
+        <?php if (mysqli_num_rows($result) > 0) { 
+    while ($row = mysqli_fetch_assoc($result)) { ?>
+<tr>
+    <td><?= $row['name']; ?></td>
+    <td><?= $row['department']; ?></td>
+    <td>
+        <select name="status[<?= $row['id']; ?>]">
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+        </select>
+    </td>
+</tr>
+<?php } } else { ?>
+<tr><td colspan="3">No staff found</td></tr>
+<?php } ?>
+
         </table>
 
         <button type="submit" name="submit">Save Attendance</button>
