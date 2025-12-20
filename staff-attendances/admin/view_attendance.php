@@ -159,9 +159,7 @@ if (!$result) {
                     <td><?php echo $row['date']; ?></td>
                     <td><?php echo $row['status']; ?></td>
 
-                    <td>
-                        <span class="badge present">Present</span>
-                    </td>
+                    
 
                 </tr>
         <?php
