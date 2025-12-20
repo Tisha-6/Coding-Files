@@ -84,12 +84,13 @@
 
 <body>
 
-    <h2>Admin Dashboard</h2>
+    <div class="dashboard">
+        <h2>Admin Dashboard</h2>
 
-    <a href="add_staff.php">Add Staff</a> |
-    <a href="mark_attendance.php">Mark Attendance</a> |
-    <a href="view_attendance.php">View Attendance</a>
-
+        <a href="add_staff.php">Add Staff</a>
+        <a href="mark_attendance.php">Mark Attendance</a>
+        <a href="view_attendance.php">View Attendance</a>
+    </div>
 </body>
 
 </html>
