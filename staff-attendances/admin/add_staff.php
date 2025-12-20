@@ -6,7 +6,7 @@ if (isset($_POST['submit'])) {
     $department = $_POST['department'];
 
     mysqli_query($conn, "INSERT INTO staff (name, department) VALUES ('$name','$department')");
-    echo "Staff added successfully";
+    $success = "Staff added successfully";
 }
 ?>
 
@@ -18,15 +18,21 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
 
-<h2>Add Staff</h2>
+<div class="form-container">
+    <h2>Add Staff</h2>
 
-<form method="POST">
-    <input type="text" name="name" placeholder="Staff Name" required>
-    <input type="text" name="department" placeholder="Department" required>
-    <button type="submit" name="submit">Add Staff</button>
-</form>
+    <?php if (!empty($success)) { ?>
+        <div class="success-msg"><?php echo $success; ?></div>
+    <?php } ?>
 
-<a href="dashboard.php">Back</a>
+    <form method="POST">
+        <input type="text" name="name" placeholder="Staff Name" required>
+        <input type="text" name="department" placeholder="Department" required>
+        <button type="submit" name="submit">Add Staff</button>
+    </form>
+
+    <a href="dashboard.php" class="back-link">← Back to Dashboard</a>
+</div>
 
 </body>
 </html>
