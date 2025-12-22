@@ -1,29 +1,38 @@
 <?php
 include '../config/db.php';
 
-// Fetch staff ONCE
+/* 1️⃣ FETCH STAFF — ALWAYS */
+$result = mysqli_query($conn, "SELECT * FROM staff");
+if (!$result) {
+    die("Staff query failed: " . mysqli_error($conn));
+}
+
+/* 2️⃣ HANDLE FORM SUBMISSION */
+$message = "";
+
 if (isset($_POST['submit']) && isset($_POST['status']) && is_array($_POST['status'])) {
 
     $date = $_POST['date'];
     $status = $_POST['status'];
 
-    // Check if attendance already exists for this date
-    $check = mysqli_query($conn, "SELECT * FROM attendance WHERE date = '$date'");
+    // Check if attendance already marked for this date
+    $check = mysqli_query($conn, "SELECT id FROM attendance WHERE date = '$date'");
 
     if (mysqli_num_rows($check) > 0) {
-        echo "<p style='color:red; text-align:center;'>Attendance already marked for this date.</p>";
+        $message = "<p style='color:red; text-align:center;'>Attendance already marked for this date.</p>";
     } else {
 
         foreach ($status as $staff_id => $attendance) {
-            mysqli_query($conn, "INSERT INTO attendance (staff_id, date, status)
-                                 VALUES ('$staff_id', '$date', '$attendance')");
+            mysqli_query(
+                $conn,
+                "INSERT INTO attendance (staff_id, date, status)
+                 VALUES ('$staff_id', '$date', '$attendance')"
+            );
         }
 
-        echo "<p style='color:green; text-align:center;'>Attendance marked successfully.</p>";
+        $message = "<p style='color:green; text-align:center;'>Attendance marked successfully.</p>";
     }
 }
-
-
 ?>
 
 
