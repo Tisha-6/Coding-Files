@@ -184,6 +184,8 @@ if (isset($_POST['submit']) && isset($_POST['status']) && is_array($_POST['statu
 <div class="card">
 
     <h2>Mark Attendance</h2>
+    <?php if (!empty($message)) echo $message; ?>
+
 
     <form method="POST">
 
