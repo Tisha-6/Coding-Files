@@ -151,39 +151,55 @@ if (!$result) {
 </head>
 
 <body>
+<div class="attendance-card">
 
-    <h2>Attendance Records</h2>
+    <h2>Attendance Overview</h2>
 
-    <table border="1">
-        <tr>
-            <th>Name</th>
-            <th>Department</th>
-            <th>Date</th>
-            <th>Status</th>
-        </tr>
+    <div class="legend">
+        <span><div class="dot" style="background:#2e7d32;"></div> Present</span>
+        <span><div class="dot" style="background:#c62828;"></div> Absent</span>
+        <span><div class="dot" style="background:#f9a825;"></div> Leave</span>
+    </div>
 
+    <table>
+        <thead>
+            <tr>
+                <th>Staff Name</th>
+                <th>Department</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
         <?php
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
+
+                $statusClass = strtolower($row['status']); // present / absent / leave
         ?>
-                <tr>
-                    <td><?php echo $row['name']; ?></td>
-                    <td><?php echo $row['department']; ?></td>
-                    <td><?php echo $row['date']; ?></td>
-                    <td><?php echo $row['status']; ?></td>
-
-
-
-                </tr>
+            <tr>
+                <td><?php echo $row['name']; ?></td>
+                <td><?php echo $row['department']; ?></td>
+                <td><?php echo date("d M Y", strtotime($row['date'])); ?></td>
+                <td>
+                    <span class="badge <?php echo $statusClass; ?>">
+                        <?php echo ucfirst($row['status']); ?>
+                    </span>
+                </td>
+            </tr>
         <?php
             }
         } else {
             echo "<tr><td colspan='4'>No attendance records found</td></tr>";
         }
         ?>
+        </tbody>
     </table>
 
-    <a href="dashboard.php">Back</a>
+    <a href="dashboard.php" class="back-btn">← Back to Dashboard</a>
+
+</div>
+
 
 </body>
 
