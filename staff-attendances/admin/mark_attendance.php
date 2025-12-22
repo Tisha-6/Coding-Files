@@ -30,6 +30,141 @@ if (isset($_POST['submit']) && isset($_POST['status']) && is_array($_POST['statu
 <head>
     <title>Mark Attendance</title>
     <link rel="stylesheet" href="../css/style.css">
+
+    <head>
+    <title>Mark Attendance</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e3f2fd, #ede7f6);
+            padding: 40px;
+        }
+
+        .card {
+            max-width: 1100px;
+            margin: auto;
+            background: #fff;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c2c2c;
+        }
+
+        /* Date Picker */
+        .date-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        input[type="date"] {
+            padding: 10px 18px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #5c6bc0;
+            color: #fff;
+            padding: 14px;
+            font-size: 13px;
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        tbody tr:hover {
+            background: #f5f7ff;
+        }
+
+        /* Status Select */
+        select {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        select option[value="Present"] {
+            color: green;
+        }
+
+        select option[value="Absent"] {
+            color: red;
+        }
+
+        /* Buttons */
+        .actions {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 10px 30px;
+            background: #5c6bc0;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #3f51b5;
+        }
+
+        .back {
+            display: inline-block;
+            margin-left: 15px;
+            padding: 10px 25px;
+            background: #eee;
+            color: #333;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 14px;
+        }
+
+        .back:hover {
+            background: #ddd;
+        }
+
+        @media(max-width: 768px) {
+            th, td {
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
 </head>
 
 <body>
