@@ -2,24 +2,27 @@
 include '../config/db.php';
 
 // Fetch staff ONCE
-$result = mysqli_query($conn, "SELECT * FROM staff");
-if (!$result) {
-    die("Query failed: " . mysqli_error($conn));
-}
-
-// Handle form submission
 if (isset($_POST['submit']) && isset($_POST['status']) && is_array($_POST['status'])) {
 
     $date = $_POST['date'];
     $status = $_POST['status'];
 
-    foreach ($status as $staff_id => $attendance) {
-        mysqli_query($conn, "INSERT INTO attendance (staff_id, date, status)
-                             VALUES ('$staff_id', '$date', '$attendance')");
-    }
+    // Check if attendance already exists for this date
+    $check = mysqli_query($conn, "SELECT * FROM attendance WHERE date = '$date'");
 
-    echo "<p>Attendance marked successfully</p>";
+    if (mysqli_num_rows($check) > 0) {
+        echo "<p style='color:red; text-align:center;'>Attendance already marked for this date.</p>";
+    } else {
+
+        foreach ($status as $staff_id => $attendance) {
+            mysqli_query($conn, "INSERT INTO attendance (staff_id, date, status)
+                                 VALUES ('$staff_id', '$date', '$attendance')");
+        }
+
+        echo "<p style='color:green; text-align:center;'>Attendance marked successfully.</p>";
+    }
 }
+
 
 ?>
 
