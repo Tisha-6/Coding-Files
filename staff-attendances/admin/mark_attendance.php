@@ -169,17 +169,25 @@ if (isset($_POST['submit']) && isset($_POST['status']) && is_array($_POST['statu
 
 <body>
 
+<div class="card">
+
     <h2>Mark Attendance</h2>
 
     <form method="POST">
-        <input type="date" name="date" required><br><br>
+
+        <div class="date-box">
+            <input type="date" name="date" required>
+        </div>
 
         <table>
-            <tr>
-                <th>Name</th>
-                <th>Department</th>
-                <th>Status</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Staff Name</th>
+                    <th>Department</th>
+                    <th>Attendance Status</th>
+                </tr>
+            </thead>
+            <tbody>
 
             <?php if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -188,24 +196,29 @@ if (isset($_POST['submit']) && isset($_POST['status']) && is_array($_POST['statu
                         <td><?= $row['department']; ?></td>
                         <td>
                             <select name="status[<?= $row['id']; ?>]">
-                                <option value="Present">Present</option>
-                                <option value="Absent">Absent</option>
+                                <option value="Present">✔ Present</option>
+                                <option value="Absent">✖ Absent</option>
                             </select>
                         </td>
                     </tr>
-                <?php }
+            <?php }
             } else { ?>
                 <tr>
                     <td colspan="3">No staff found</td>
                 </tr>
             <?php } ?>
 
+            </tbody>
         </table>
 
-        <button type="submit" name="submit">Save Attendance</button>
+        <div class="actions">
+            <button type="submit" name="submit">Save Attendance</button>
+            <a href="dashboard.php" class="back">Back</a>
+        </div>
+
     </form>
 
-    <a href="dashboard.php">Back</a>
+</div>
 
 </body>
 
