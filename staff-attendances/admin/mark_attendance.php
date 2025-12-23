@@ -237,20 +237,3 @@ if (isset($_POST['submit']) && isset($_POST['status']) && is_array($_POST['statu
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
