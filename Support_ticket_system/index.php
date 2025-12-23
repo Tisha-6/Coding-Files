@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="./asstes/style.css">
 </head>
 <body>
 <form method="post" action="auth/login.php">
