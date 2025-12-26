@@ -1,4 +1,4 @@
-<?php include("./Support_ticket_system/config/db.php"); ?>
+<?php include("../php_coder/Support_ticket_system/config/db.php"); ?>
 
 <h2>All Tickets</h2>
 
