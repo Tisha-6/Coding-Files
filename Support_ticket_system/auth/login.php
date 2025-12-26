@@ -18,19 +18,16 @@ if (!$user) {
     exit;
 }
 
-// ✅ FOR HASHED PASSWORDS
 if (!password_verify($password, $user['password'])) {
     echo "Invalid email or password";
     exit;
 }
 
-// ✅ LOGIN SUCCESS
+// ✅ SUCCESS
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['role'] = $user['role'];
 
-if ($user['role'] === 'admin') {
-    header("Location: ../admin/dashboard.php");
-} else {
-    header("Location: ../user/my_tickets.php");
-}
+header("Location: " . ($user['role'] === 'admin'
+    ? "../admin/dashboard.php"
+    : "../user/my_tickets.php"));
 exit;
