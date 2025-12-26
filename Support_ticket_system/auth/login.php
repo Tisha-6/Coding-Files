@@ -1,5 +1,5 @@
 <?php
-include("../config/db.php");
+include("./Support_ticket_system/config/db.php");
 
 $email = trim($_POST['email']);
 $password = trim($_POST['password']);
