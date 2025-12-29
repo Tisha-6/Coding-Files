@@ -31,3 +31,4 @@ header("Location: " . ($user['role'] === 'admin'
     ? "../admin/dashboard.php"
     : "../user/my_tickets.php"));
 exit;
+
